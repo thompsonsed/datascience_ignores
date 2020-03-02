@@ -2,6 +2,7 @@ import logging
 import pathlib
 import argparse
 
+
 def read_default_data() -> str:
     """
     Reads the default data from *default_ignores*
@@ -13,6 +14,7 @@ def read_default_data() -> str:
         raise FileNotFoundError(f"Default ignores template file not found at {default_ignores_path.absolute()}.")
     with default_ignores_path.open("r") as d_path:
         return d_path.read()
+
 
 def check_existing_defaults(gitignore_path: pathlib.Path) -> bool:
     """
@@ -30,9 +32,9 @@ def check_existing_defaults(gitignore_path: pathlib.Path) -> bool:
     :return: true if the defaults already exist.
     """
     if gitignore_path.exists():
-        expected_pattern = """############################
-        # Start of default ignores #
-        ############################"""
+        expected_pattern = (
+            """############################\n# Start of default ignores #\n############################\n"""
+        )
         with gitignore_path.open("r") as git_file:
             return expected_pattern in git_file.read()
     return False
@@ -69,14 +71,9 @@ def main():
     if check_existing_defaults(dest_path):
         logging.info(f"Defaults already exist in {dest_path}, exiting")
     else:
-        with dest_path.open("a") as dest_path:
-            dest_path.write(read_default_data())
+        with dest_path.open("a") as d_path:
+            d_path.write(read_default_data())
         logging.info(f".gitignore defaults written to {dest_path}.")
-
-
-
-
-
 
 
 if __name__ == "__main__":
