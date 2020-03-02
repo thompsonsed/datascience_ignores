@@ -1,5 +1,7 @@
 # Datascience defaults for .gitignore
 
+Based on the set of default gitignores from [Equinor](https://github.com/equinor/data-science-template/blob/master/.gitignore).
+
 Running the python script will either create a new gitignore in the provided directory (or current directory by default) from the *default_ignores.txt* file, or append the contents of *default_ignores.txt* to the provided text file.
 
 ## Usage
