@@ -54,7 +54,6 @@ vignettes/*.pdf
 
 # Files created by the packrat package manager
 packrat/lib*/
-packrat/src/
 
 ##
 ## Python Section - See https://github.com/github/gitignore/blob/master/Python.gitignore
